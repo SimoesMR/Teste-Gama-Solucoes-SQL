@@ -1,3 +1,5 @@
+-- Seleciona tabelas
+
 SELECT * FROM teste_gama.nota_fiscal;
 
 SELECT * FROM teste_gama.produto;
