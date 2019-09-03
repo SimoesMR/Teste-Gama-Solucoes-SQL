@@ -1,3 +1,5 @@
+-- Criando tabelas
+
 CREATE TABLE NOTA_FISCAL (NotaFiscalId INT PRIMARY KEY,
 	DataEmissao DATE NOT NULL);
 
