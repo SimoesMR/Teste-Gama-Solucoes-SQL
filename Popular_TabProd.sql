@@ -1,3 +1,5 @@
+-- Populando tabela de Produtos
+
 INSERT INTO PRODUTO (ProdutoId,Nome,PrecoUnitario) VALUES (1,"Café",7.69);
 INSERT INTO PRODUTO (ProdutoId,Nome,PrecoUnitario) VALUES (2,"Pão",6.21);
 INSERT INTO PRODUTO (ProdutoId,Nome,PrecoUnitario) VALUES (3,"Pate",3.19);
