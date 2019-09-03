@@ -1,3 +1,5 @@
+-- Populando tabela de Nota Fiscal
+
 INSERT INTO NOTA_FISCAL (NotaFiscalId,DataEmissao) VALUES (1,"13/01/19");
 INSERT INTO NOTA_FISCAL (NotaFiscalId,DataEmissao) VALUES (2,"21/01/19");
 INSERT INTO NOTA_FISCAL (NotaFiscalId,DataEmissao) VALUES (3,"03/02/19");
