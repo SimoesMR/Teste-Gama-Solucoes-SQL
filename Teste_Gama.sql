@@ -1,20 +1,16 @@
--- Seleciona tabelas
-
+-- Seleciona tabelas para verificar se foram inserido os dados
 SELECT * FROM teste_gama.nota_fiscal;
-
 SELECT * FROM teste_gama.produto;
-
 SELECT * FROM teste_gama.nota_fiscal_item;
 
-SELECT Nome FROM PRODUTO WHERE PrecoUnitario = (SELECT MAX(PrecoUnitario) FROM nota_fiscal_item);  -- Nome do produto com maior valor de venda (considere o valor do item na nota fiscal).
-
+-- A. Nome do produto com maior valor de venda (considere o valor do item na nota fiscal).
 SELECT Nome
-FROM PRODUTO PRDT
-INNER JOIN NOTA_FISCAL_ITEM NFI 
-ON NFI.ProdutoId = PRDT.ProdutoID
-where max(NFI.PrecoUnitario);
+	FROM PRODUTO PROD
+    JOIN NOTA_FISCAL_ITEM NFI
+    ON PROD.ProdutoId = NFI.ProdutoId
+	ORDER BY NFI.PrecoUnitario*Quantidade desc LIMIT 1;
 
--- Valor total de todas as notas e o valor total de todas as notas considerando o preço atual do produto.
+-- B. Valor total de todas as notas e o valor total de todas as notas considerando o preço atual do produto.
 SELECT 
 	SUM(nfi.PrecoUnitario) as ValorTotal_NF,
 	SUM(PRDT.PrecoUnitario) as ValorTotal_NFPrcAtual	
@@ -22,4 +18,4 @@ SELECT
 	INNER JOIN PRODUTO PRDT 
 	ON PRDT.ProdutoID = nfi.ProdutoId;
 
-SELECT PrecoUnitario FROM NOTA_FISCAL_ITEM ORDER BY (Quantidade*PrecoUnitario) DESC LIMIT 5;  -- Nome dos 5 produtos mais vendidos (quantidade) do mês atual.
+-- C. Nome dos 5 produtos mais vendidos (quantidade) do mês atual.
