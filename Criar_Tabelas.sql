@@ -2,7 +2,7 @@ DROP TABLE NOTA_FISCAL;
 DROP TABLE PRODUTO;
 DROP TABLE NOTA_FISCAL_ITEM;
 
--- Criando tabelas
+-- Criando tabelas: NF, Produto, NFI 
 
 CREATE TABLE NOTA_FISCAL 
 	(NotaFiscalId INT PRIMARY KEY,
