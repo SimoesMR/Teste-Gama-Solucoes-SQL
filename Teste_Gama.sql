@@ -12,18 +12,18 @@ SELECT PROD.Nome, NFI.PrecoUnitario, NFI.Quantidade
 
 -- B. Valor total de todas as notas e o valor total de todas as notas considerando o preço atual do produto.
 SELECT 
-	SUM(NFI.PrecoUnitario) as ValorTotal_NF,
-	SUM(PROD.PrecoUnitario) as ValorTotal_NFPrcAtual	
-	FROM NOTA_FISCAL_ITEM NFI
-	INNER JOIN PRODUTO PROD 
-	ON PROD.ProdutoID = NFI.ProdutoId;
+		SUM(NFI.PrecoUnitario) as ValorTotal_NF,
+		SUM(PROD.PrecoUnitario) as ValorTotal_NFPrcAtual	
+		FROM NOTA_FISCAL_ITEM NFI
+		INNER JOIN PRODUTO PROD 
+		ON PROD.ProdutoID = NFI.ProdutoId;
 
 -- C. Nome dos 5 produtos mais vendidos (quantidade) do mês atual.
 SELECT PROD.Nome, NFI.Quantidade
-	FROM PRODUTO PROD
-   	INNER JOIN NOTA_FISCAL_ITEM NFI
+		FROM PRODUTO PROD
+		INNER JOIN NOTA_FISCAL_ITEM NFI
     	ON NFI.ProdutoId = PROD.ProdutoId
-   	INNER JOIN NOTA_FISCAL NF
+		INNER JOIN NOTA_FISCAL NF
     	ON NF.NotaFiscalId = NFI.NotaFiscalId
-    	WHERE DataEmissao > DATE(NOW())
+    	WHERE NF.DataEmissao > DATE_SUB(CURRENT_DATE, INTERVAL DAYOFMONTH(CURRENT_DATE) -1 DAY)
     	ORDER BY NFI.QUANTIDADE DESC LIMIT 5;
